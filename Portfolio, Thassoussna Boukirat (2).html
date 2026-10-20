@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Portfolio, Thassoussna Boukirat</title>
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --desk:#c9cde0; --sheet:#f7f8fc; --slip:#fffdf3; --fold:#dfe2f0; --rule:#c4cbe6; --vrule:#e3e7f4;
+  --ink:#16213e; --soft:#4b5573; --mark:#3c4cf0; --red:#d9534f; --hi:#ffe27a;
+  --display:"Bricolage Grotesque","Trebuchet MS",sans-serif;
+  --text:"Newsreader",Georgia,serif;
+  --hand:"Caveat","Segoe Print","Comic Sans MS",cursive;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--desk:#0a0f1f; --sheet:#151d36; --slip:#1c2547; --fold:#2b3563; --rule:#26315a; --vrule:#1c2545; --ink:#e8ebf7; --soft:#a2abc9; --mark:#9aa5ff; --red:#ef7b77; --hi:#6b5a12}
+}
+:root[data-theme="dark"]{--desk:#0a0f1f; --sheet:#151d36; --slip:#1c2547; --fold:#2b3563; --rule:#26315a; --vrule:#1c2545; --ink:#e8ebf7; --soft:#a2abc9; --mark:#9aa5ff; --red:#ef7b77; --hi:#6b5a12}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0; background:var(--desk); color:var(--ink); font-family:var(--text); font-size:19px; line-height:1.6; text-align:center}
+a{color:inherit; text-decoration-color:var(--mark); text-decoration-thickness:2px; text-underline-offset:4px}
+a:hover{background:var(--hi)}
+a:focus-visible,.ear:focus-visible{outline:3px solid var(--mark); outline-offset:3px}
+.page{max-width:820px; margin:0 auto; padding:clamp(16px,4vw,48px) clamp(10px,3vw,24px) 64px}
+
+/* a leaf is a piece of paper with a bent top-right corner */
+.leaf{--e:34px; position:relative}
+.leaf:has(>.ear:hover){--e:46px}
+.leaf.open{--e:58px}
+.slip{position:relative; background:var(--slip); clip-path:polygon(0 0,calc(100% - var(--e)) 0,100% var(--e),100% 100%,0 100%); transition:clip-path .3s}
+.ear{position:absolute; top:0; right:0; z-index:2; width:var(--e); height:var(--e); padding:0; border:0; cursor:pointer; background:var(--fold); clip-path:polygon(0 0,100% 100%,0 100%); transition:width .3s,height .3s,background .2s}
+.ear:hover{background:var(--hi)}
+.leaf.open>.ear{background:var(--hi)}
+
+/* the notebook page, Seyès style */
+.sheet{--e:56px; filter:drop-shadow(0 12px 20px rgba(10,15,40,.25))}
+.sheet:has(>.ear:hover){--e:70px}
+.sheet.open{--e:70px}
+.sheet>.slip{background-color:var(--sheet);
+  background-image:repeating-linear-gradient(to bottom,transparent 0 31px,var(--rule) 31px 32px),repeating-linear-gradient(to right,transparent 0 31px,var(--vrule) 31px 32px);
+  padding:clamp(40px,7vw,72px) clamp(24px,6vw,64px) 56px}
+.sheet>.slip::before{content:""; position:absolute; left:clamp(12px,3.5vw,34px); top:0; bottom:0; width:2px; background:var(--red)}
+
+h1{font-family:var(--display); font-weight:800; font-size:clamp(2.9rem,11vw,6.2rem); line-height:.9; letter-spacing:-.035em; margin:0}
+h1 span{display:block}
+.label{display:inline-block; margin:22px 0 0; font-family:var(--hand); font-size:1.45rem; line-height:1.2; color:var(--mark)}
+.label u{text-decoration:none; border-bottom:2px dotted var(--mark); padding:0 .35em}
+.lead{max-width:30em; margin:26px auto 0; font-size:1.28rem}
+.avail{display:inline-block; margin:22px 0 0; padding:6px 18px; border:2px dashed var(--ink); font-family:var(--hand); font-weight:700; font-size:1.45rem; line-height:1.2; transform:rotate(-1.5deg); background:var(--hi)}
+h2{display:inline-block; font-family:var(--display); font-weight:800; font-size:1.9rem; letter-spacing:-.02em; margin:0; padding:0 .4em .05em; border-bottom:6px double var(--red)}
+section{margin-top:clamp(56px,9vw,96px)}
+.note{font-family:var(--hand); font-size:1.4rem; line-height:1.25; color:var(--mark); margin:10px auto 0; max-width:24em}
+.stack{display:grid; gap:34px; max-width:560px; margin:34px auto 0}
+.entry{filter:drop-shadow(4px 5px 0 var(--ink))}
+.entry:nth-child(odd){transform:rotate(-.6deg)}
+.entry:nth-child(even){transform:rotate(.5deg)}
+.entry>.slip{padding:26px 30px 24px}
+.year{font-family:var(--hand); font-weight:700; font-size:1.35rem; color:var(--red); line-height:1}
+h3{font-family:var(--display); font-weight:800; font-size:clamp(1.6rem,5vw,2.1rem); line-height:1.05; letter-spacing:-.025em; margin:2px 0 4px}
+.kind{display:block; color:var(--soft); font-style:italic}
+.more p{max-width:30em; margin:.9em auto 0}
+.more .hand{font-family:var(--hand); font-size:1.4rem; line-height:1.3; color:var(--mark)}
+.js .more{display:grid; grid-template-rows:0fr; transition:grid-template-rows .45s cubic-bezier(.2,.8,.2,1)}
+.js .more>div{overflow:hidden; min-height:0}
+.js .leaf.open>.slip>.more{grid-template-rows:1fr}
+.verso>div{border-top:2px dashed var(--red); margin-top:28px}
+.verso h4{font-family:var(--hand); font-weight:700; font-size:1.9rem; color:var(--red); margin:14px 0 0; line-height:1}
+.tools{max-width:34em; margin:26px auto 0}
+.tools p{margin:0 0 1em}
+.tools b,.dates b{font-family:var(--display); font-weight:800}
+.dates p{margin:1.1em auto 0; max-width:30em}
+.contact{display:block; margin:26px 0 0; font-family:var(--display); font-weight:800; font-size:clamp(1.3rem,5vw,2.5rem); line-height:1.1; letter-spacing:-.025em; overflow-wrap:anywhere}
+footer{margin-top:64px; font-family:var(--hand); font-size:1.3rem; color:var(--soft)}
+[hidden]{display:none!important}
+.book{display:grid;perspective:1800px}
+.book>.sheet{grid-area:1/1;align-self:start;backface-visibility:hidden}
+.sheet>.slip{padding-bottom:110px;clip-path:polygon(0 0,100% 0,100% calc(100% - var(--e)),calc(100% - var(--e)) 100%,0 100%)}
+.sheet>.ear{top:auto;bottom:0;clip-path:polygon(0 0,100% 0,0 100%)}
+.sheet.back>.slip{clip-path:polygon(0 0,100% 0,100% 100%,var(--e) 100%,0 calc(100% - var(--e)))}
+.sheet.back>.ear{right:auto;left:0;clip-path:polygon(0 0,100% 0,100% 100%)}
+.ear.static{pointer-events:none}
+.turn{margin-top:56px}
+@media (max-width:560px){body{font-size:18px}.entry>.slip{padding:24px 20px 22px}}
+@media (prefers-reduced-motion:reduce){.slip,.ear,.js .more{transition:none}}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="book">
+<div class="leaf sheet" id="p1">
+  <button class="ear" id="next" aria-label="Tourner la page pour voir le reste de moi"></button>
+  <div class="slip">
+    <header>
+      <h1><span>Thassoussna</span><span>Boukirat</span></h1>
+      <p class="label">Classe : <u>Master 1 Génie de l’Informatique Logicielle</u></p>
+      <p class="lead">J’aime concevoir des solutions logicielles, résoudre des problèmes concrets et transformer des idées en applications fonctionnelles.</p>
+      <p class="avail">Cherche : stage d’été 2027, puis alternance dès la rentrée 2027</p>
+    </header>
+
+
+    <section id="projets" aria-labelledby="h-projets">
+      <h2 id="h-projets">Projets récents</h2>
+      <p class="note">Un coin replié ? Cliquez dessus pour en découvrir plus.</p>
+      <div class="stack">
+
+        <div class="leaf entry">
+          <button class="ear" aria-expanded="false" aria-label="Voir le détail de MatchTalent"></button>
+          <div class="slip">
+            <span class="year">2026</span>
+            <h3>MatchTalent</h3>
+            <span class="kind">Plateforme de recrutement, web full-stack avec microservice d’IA</span>
+            <div class="more"><div>
+              <p>Candidats et recruteurs se retrouvent sur la même plateforme. Un système de recommandation compare un CV à une offre d’emploi et les rapproche automatiquement. Un second module d’IA vérifie les documents fournis par les entreprises.</p>
+              <p class="hand">Projet d’équipe, du modèle de données jusqu’au déploiement.</p>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="leaf entry">
+          <button class="ear" aria-expanded="false" aria-label="Voir le détail de NEXUS"></button>
+          <div class="slip">
+            <span class="year">2026</span>
+            <h3>NEXUS</h3>
+            <span class="kind">Marketplace de produits informatiques avec prévisions de ventes</span>
+            <div class="more"><div>
+              <p>Une marketplace multi-vendeurs, avec un module d’apprentissage automatique qui prédit le chiffre d’affaires et la demande par produit, pour prévenir les ruptures de stock avant qu’elles arrivent.</p>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="leaf entry">
+          <button class="ear" aria-expanded="false" aria-label="Voir le détail de la détection de fausses informations"></button>
+          <div class="slip">
+            <span class="year">2026</span>
+            <h3>Détection de fausses informations</h3>
+            <span class="kind">Recherche appliquée, traitement distribué de données</span>
+            <div class="more"><div>
+              <p>Un pipeline de classification de textes qui associe traitement distribué à grande échelle et réseau de neurones séquentiel. Les réglages du modèle sont trouvés par un algorithme génétique, plutôt qu’à tâtons.</p>
+              <p class="hand">Précision obtenue : 97,6 %</p>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="leaf entry">
+          <button class="ear" aria-expanded="false" aria-label="Voir le détail de DocLick"></button>
+          <div class="slip">
+            <span class="year">2025</span>
+            <h3>DocLick</h3>
+            <span class="kind">Prise de rendez-vous médicaux, projet de fin de licence</span>
+            <div class="more"><div>
+              <p>Réservation de créneaux chez le médecin, sur le web et sur Android, à partir d’une seule base de code.</p>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="leaf entry">
+          <button class="ear" aria-expanded="false" aria-label="Voir le détail de la gestion d’agence de voyages"></button>
+          <div class="slip">
+            <span class="year">2025</span>
+            <h3>Agence de voyages</h3>
+            <span class="kind">Application de bureau</span>
+            <div class="more"><div>
+              <p>Gestion des clients, des voyages et des réservations d’une agence, avec les données stockées dans une base relationnelle.</p>
+            </div></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <p class="note" style="margin-top:34px">Plus de détails, d’autres projets et tout le code : direction <a href="https://github.com/ansusta">GitHub</a>.</p>
+
+    <section id="outils" aria-labelledby="h-outils">
+      <h2 id="h-outils">Ce que j’utilise</h2>
+      <div class="tools">
+        <p><b>Langages.</b> Java, JavaScript, TypeScript, Python, C, C++, SQL, HTML, CSS, GDScript.</p>
+        <p><b>Web.</b> React, Node.js, Express, FastAPI, Flask, React Native.</p>
+        <p><b>Données et IA.</b> PostgreSQL, MySQL, MongoDB, Oracle, Redis, PyTorch, scikit-learn, XGBoost, Sentence Transformers, PySpark.</p>
+        <p><b>Au quotidien.</b> Git, GitHub Actions, Figma, Visual Paradigm, Scrum.</p>
+        <p><b>Sous le capot.</b> Ghidra, x64dbg, Cisco Packet Tracer.</p>
+      </div>
+    </section>
+
+    <section id="parcours" aria-labelledby="h-parcours">
+      <h2 id="h-parcours">Parcours</h2>
+      <div class="dates">
+        <p><b>Master 1 Génie de l’Informatique Logicielle</b><br>Université de Rouen Normandie, 2026–2027</p>
+        <p><b>Master 1 Informatique, Génie Logiciel</b><br>Université A. Mira, Béjaïa, 2025–2026</p>
+        <p><b>Licence Informatique</b><br>Université A. Mira, Béjaïa, 2022–2025</p>
+        <p><b>Support informatique, IlyTours (Algérie), décembre 2025</b><br>Assistance technique, résolution des incidents, maintenance du site web de l’agence.</p>
+        <p><b>Langues.</b> Français courant, arabe et kabyle natifs, anglais, italien.</p>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="h-contact">
+      <h2 id="h-contact">Écrivez-moi</h2>
+      <p class="tools">Je cherche un stage d’été en développement logiciel, puis une alternance. Si votre équipe recrute, écrivez-moi.</p>
+      <a class="contact" href="mailto:Boukirat.thassousna@gmail.com">Boukirat.thassousna@gmail.com</a>
+      <p class="tools"><a href="https://github.com/ansusta">GitHub</a>, <a href="https://www.linkedin.com/in/thassousna-boukirat-25134b438">LinkedIn</a>. Basée à Rouen.</p>
+    </section>
+    <p class="note turn">Une dernière page, hors programme : tournez le coin en bas à droite.</p>
+  </div>
+</div>
+
+<div class="leaf sheet back" id="p2" hidden>
+  <button class="ear" id="prev" aria-label="Revenir à la première page"></button>
+  <div class="slip">
+    <header>
+      <h1><span>Hors programme</span><span>de moi</span></h1>
+      <p class="lead">Ce qui ne tient pas dans une ligne de CV, mais qui dit aussi qui je suis.</p>
+    </header>
+    <section aria-label="Hobbies et projets perso">
+      <div class="stack">
+        <div class="leaf entry">
+          <button class="ear" aria-expanded="false" aria-label="Voir le détail : jeux vidéo"></button>
+          <div class="slip">
+            <h3>Jeux vidéo</h3>
+            <span class="kind">Godot, GDScript, C, Python</span>
+            <div class="more"><div>
+              <p>Je fais des jeux avec Godot et J’écris aussi de petits scripts en Python et en C, pour moi.</p>
+            </div></div>
+          </div>
+        </div>
+        <div class="leaf entry">
+          <span class="ear static"></span>
+          <div class="slip">
+            <h3>Sous le capot</h3>
+            <span class="kind">Ghidra, x64dbg</span>
+            <p style="margin:.9em 0 0">J’ouvre des programmes pour voir comment ils sont faits.</p>
+          </div>
+        </div>
+        <div class="leaf entry">
+          <span class="ear static"></span>
+          <div class="slip">
+            <h3>Papier et crayon</h3>
+            <span class="kind">Dessin, lecture</span>
+            <p style="margin:.9em 0 0">Je dessine et je lis, loin de l’écran.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <p class="note turn">Retour en classe : le coin en bas à gauche ramène à la première page.</p>
+  </div>
+</div>
+</div>
+</div>
+<script>
+document.querySelectorAll('.entry>button.ear').forEach(function(b){
+  b.addEventListener('click',function(){
+    var l=b.closest('.leaf'),o=l.classList.toggle('open');
+    b.setAttribute('aria-expanded',o);
+  });
+});
+var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function turn(a,b,fwd){
+  b.hidden=false;a.style.zIndex=2;
+  if(rm){a.hidden=true;a.style.zIndex='';scrollTo(0,0);return}
+  function go(){
+    a.style.transformOrigin=fwd?'left center':'right center';
+    var an=a.animate([{transform:'rotateY(0deg)'},{transform:'rotateY('+(fwd?-100:100)+'deg)'}],{duration:800,easing:'cubic-bezier(.5,0,.3,1)',fill:'forwards'});
+    an.onfinish=function(){a.hidden=true;an.cancel();a.style.zIndex='';scrollTo(0,0)};
+  }
+  if(scrollY>40){scrollTo({top:0,behavior:'smooth'});setTimeout(go,450)}else go();
+}
+var p1=document.getElementById('p1'),p2=document.getElementById('p2');
+document.getElementById('next').addEventListener('click',function(){turn(p1,p2,true)});
+document.getElementById('prev').addEventListener('click',function(){turn(p2,p1,false)});
+</script>
+</body>
+</html>
